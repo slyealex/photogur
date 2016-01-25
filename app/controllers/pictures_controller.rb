@@ -19,14 +19,14 @@ class PicturesController < ApplicationController
   end
 
   def update
-    @picture = Picture.fint(params[:id])
+    @picture = Picture.find(params[:id])
     if @picture.update_attributes(picture_params)
-      redirect_to "/pictures/#{picture.id}"
+      redirect_to "/pictures/#{@picture.id}"
     else
       render :edit
     end
   end
-  
+
   def index
     @pictures = Picture.all
   end
@@ -34,9 +34,6 @@ class PicturesController < ApplicationController
   def show
     @picture = Picture.find(params[:id])
   end
-
-
-
 
 
   private
